@@ -64,9 +64,9 @@ OBJ      += player/opensl_player.o player/oboe_player.o
 
 else ifeq ($(TARGET), OPENWRT)
 
-CXXFLAGS += -pthread -DNO_CPP11_STRING -DHAS_TREMOR -DHAS_ALSA -DHAS_AVAHI -DHAS_DAEMON
-LDFLAGS  += -lasound -lvorbisidec -lavahi-client -lavahi-common -latomic
-OBJ      += ../common/daemon.o player/alsa_player.o browseZeroConf/browse_avahi.o
+CXXFLAGS += -pthread -DNO_CPP11_STRING -DHAS_TREMOR -DHAS_ALSA -DHAS_AVAHI -DHAS_DAEMON -DHAS_PULSE
+LDFLAGS  += -lasound -lvorbisidec -lavahi-client -lavahi-common -latomic -lpulse
+OBJ      += ../common/daemon.o player/alsa_player.o browseZeroConf/browse_avahi.o player/pulse_player.o
 
 else ifeq ($(TARGET), BUILDROOT)
 
